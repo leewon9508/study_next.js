@@ -1,0 +1,3 @@
+var UserHistory = []
+
+export {UserHistory};
