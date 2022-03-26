@@ -3,7 +3,7 @@ import {useState} from 'react'
 import {useRouter} from 'next/router'
 import Axios from 'axios'
 import {useDispatch, useSelector} from 'react-redux'
-import {userHistory} from '../src/modules/testRedux'
+import userHistory from '../src/modules/userHistory'
 
 export default function Login() {
   const user = useSelector(state => {
@@ -13,6 +13,7 @@ export default function Login() {
   const router = useRouter();
 
   let [info, setInfo] = useState({id: "", pw: ""});
+
   async function loginBtn() {
     const id = info.id;
     dispatch(userHistory(id));
@@ -20,13 +21,13 @@ export default function Login() {
         .then(res => {
           if (res.status === 200) {
             // 로그인 성공
-            debugger;
-            localStorage.setItem("id",info.id);
+            localStorage.setItem("id", info.id);
             router.push('/memberView');
           }
         })
   }
-console.log(user);
+
+  console.log(user);
 
   return (
       <div style={{padding: "100px 40%", textAlign: "center"}}>

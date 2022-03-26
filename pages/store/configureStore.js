@@ -1,7 +1,9 @@
 import {createWrapper, HYDRATE} from 'next-redux-wrapper';
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import logger from 'redux-logger';
-import {counter,login} from '../../src/modules/testRedux'
+import counter from '../../src/modules/counter'
+import login from '../../src/modules/userHistory'
+import reduxThunk from "redux-thunk";
 
 const rootReducer =
     combineReducers({
@@ -24,7 +26,7 @@ const bindMiddleware = (middleware) => {
 }
 
 const configureStore = () => {
-  return createStore(reducer, bindMiddleware([logger]));
+  return createStore(reducer, bindMiddleware([reduxThunk, logger]));
 }
 
 const wrapper = createWrapper(configureStore, {

@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux'
-import {decrease, increase} from '../src/modules/testRedux'
+import {decrease, increase} from '../src/modules/counter'
 
 
 export default function Counter() {
